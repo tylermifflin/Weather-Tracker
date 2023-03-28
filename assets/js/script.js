@@ -14,3 +14,4 @@ function getWeather() {
         console.log(data);
     });
 }
+// how to display a 5 day forecast for the city that the user searched
