@@ -26,7 +26,7 @@ function getCity(cityURL) {
 getweatherbtn.addEventListener("click", function(event) {
     event.preventDefault();
     var city = document.querySelector("#city").value;
-    var  cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + APIkey;
+    var  cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIkey;
     console.log(city);
     getCity(cityURL);
 });
