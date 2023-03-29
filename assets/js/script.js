@@ -1,16 +1,14 @@
-// created variables for my API key, city, state, and queryURL, so when the user search a specific city or state, the API will return the weather data for that city
+// created variables for my API key, city, latitude and longitude, so when the user search a specific city or state, the API will return the weather data for that city
 var APIkey = "44c0ceeaad2f13d35c6b6f46923f9c42"
-
-var lat;
-var lon;
-var country = "US";
+var city = document.querySelector("#city").value;
+var lat, lon;
 
 // need my queryURL to be a variable with lat and lon, so when the user search a specific city or state, the API will return the weather data for that city
-var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
 var cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + APIkey;
+var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
 var getweatherbtn = document.querySelector("#getweatherbtn");
 
-// function to get weather using fetch 
+// function to get weather using fetch for the cityURl but then covert the data to the queryURL
 function getCity(cityURL) {
     fetch(cityURL)
     .then(function(response) {
@@ -18,8 +16,27 @@ function getCity(cityURL) {
     })
     .then(function(data) {
         console.log(data);
+        lat = data[0].lat;
+        lon = data[0].lon;
+        console.log(lat);
+        console.log(lon);
+        // call the getWeather function and pass in the lat and lon values
+        getWeather("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey);
+    });
+
+}
+
+// function to get weather using fetch for the queryURL, using the lat and lon from the getCity function
+function getWeather(queryURL) {
+    fetch(queryURL)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data);
     });
 }
+
 
 
 // event listener for search button
@@ -30,3 +47,4 @@ getweatherbtn.addEventListener("click", function(event) {
     console.log(city);
     getCity(cityURL);
 });
+
