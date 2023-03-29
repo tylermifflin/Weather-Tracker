@@ -1,6 +1,7 @@
 // created variables for my API key, city, latitude and longitude, so when the user search a specific city or state, the API will return the weather data for that city
 var APIkey = "44c0ceeaad2f13d35c6b6f46923f9c42"
 var city = document.querySelector("#city").value;
+var weatherdata = document.querySelector("#weatherdata");
 var lat, lon;
 
 // need my queryURL to be a variable with lat and lon, so when the user search a specific city or state, the API will return the weather data for that city
@@ -34,6 +35,9 @@ function getWeather(queryURL) {
     })
     .then(function(data) {
         console.log(data);
+        // loop through the data list and display the weather data for the current day and the next 5 days, displaying the city name, date, weather icon, temperature, humidity, and wind speed
+        for (var i = 0; i < data.list.length; i++) {
+            
     });
 }
 
