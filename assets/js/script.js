@@ -11,7 +11,7 @@ var cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limi
 var getweatherbtn = document.querySelector("#getweatherbtn");
 
 // function to get weather using fetch 
-function getWeather(cityURL) {
+function getCity(cityURL) {
     fetch(cityURL)
     .then(function(response) {
         return response.json();
@@ -28,5 +28,5 @@ getweatherbtn.addEventListener("click", function(event) {
     var city = document.querySelector("#city").value;
     var  cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + APIkey;
     console.log(city);
-    getWeather(cityURL);
+    getCity(cityURL);
 });
