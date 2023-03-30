@@ -34,7 +34,9 @@ function getWeather(queryURL) {
       })
       .then(function (data) {
         var cityname = data.city.name;
-        var date = data.list[0].dt_txt;
+        var date = data.list[0].dt_txt; 
+        date = date.split(" ");
+        date = date[0];
         var weathericon = data.list[0].weather[0].icon;
         var temperature = data.list[0].main.temp;
         var humidity = data.list[0].main.humidity;
@@ -48,8 +50,9 @@ function getWeather(queryURL) {
         console.log(windspeed);
 
         var searchedcity = document.createElement("h2");
-        searchedcity.textContent = cityname;
+        searchedcity.textContent = cityname + " " + date;
         weatherEl.appendChild(searchedcity);
+        
     });
 }
     
