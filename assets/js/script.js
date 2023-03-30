@@ -36,8 +36,7 @@ function getWeather(queryURL) {
     .then(function(data) {
         console.log(data);
         // loop through the data list and display the weather data for the current day and the next 5 days, displaying the city name, date, weather icon, temperature, humidity, and wind speed
-        for (var i = 0; i < data.list.length; i++) {
-            
+
     });
 }
 
