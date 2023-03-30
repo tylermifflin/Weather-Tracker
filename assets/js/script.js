@@ -27,7 +27,7 @@ function getCity(cityURL) {
         console.log(lat);
         console.log(lon);
         // how do I get the queryURL to be a variable with lat and lon, so when the user search a specific city or state, the API will return the weather data for that city
-        getWeather(queryURL);
+        getWeather("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey)
     });
 }
 
