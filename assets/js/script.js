@@ -2,6 +2,12 @@
 var APIkey = "44c0ceeaad2f13d35c6b6f46923f9c42"
 var city = document.querySelector("#city").value;
 var weatherdata = document.querySelector("#weatherdata");
+var cityname = document.querySelector("#cityname");
+var date = document.querySelector("#date");
+var weathericon = document.querySelector("#weathericon");
+var temperature = document.querySelector("#temperature");
+var humidity = document.querySelector("#humidity");
+var windspeed = document.querySelector("#windspeed");
 var lat, lon;
 
 // need my queryURL to be a variable with lat and lon, so when the user search a specific city or state, the API will return the weather data for that city
