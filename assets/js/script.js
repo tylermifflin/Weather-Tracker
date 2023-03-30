@@ -39,8 +39,11 @@ function getWeather(queryURL) {
         date = date[0];
         var weathericon = data.list[0].weather[0].icon;
         var temperature = data.list[0].main.temp;
+        temperature = (temperature - 273.15) * 1.8 + 32;
+        temperature = Math.round(temperature);
         var humidity = data.list[0].main.humidity;
         var windspeed = data.list[0].wind.speed;
+        windspeed = Math.round(windspeed);
         //console.log(data);
         console.log(cityname);
         console.log(date);
@@ -53,6 +56,23 @@ function getWeather(queryURL) {
         searchedcity.textContent = cityname + " " + date;
         weatherEl.appendChild(searchedcity);
         
+        var weathericonEl = document.createElement("img");
+        weathericonEl.setAttribute("src", "http://openweathermap.org/img/w/" + weathericon + ".png");
+        weathericonEl.setAttribute("style", "width: 100px; height: 100px;")
+        weatherEl.appendChild(weathericonEl);
+
+        var temperatureEl = document.createElement("p");
+        temperatureEl.textContent = "Temperature: " + temperature + "°F";
+        weatherEl.appendChild(temperatureEl);
+
+        var humidityEl = document.createElement("p");
+        humidityEl.textContent = "Humidity: " + humidity + "%";
+        weatherEl.appendChild(humidityEl);
+
+        var windspeedEl = document.createElement("p");
+        windspeedEl.textContent = "Wind Speed: " + windspeed + " MPH";
+        weatherEl.appendChild(windspeedEl);
+
     });
 }
     
