@@ -2,6 +2,12 @@
 var APIkey = "44c0ceeaad2f13d35c6b6f46923f9c42"
 var city = document.querySelector("#city").value;
 var lat, lon;
+var citynameEl = document.querySelector("#cityname");
+var dateEl = document.querySelector("#date");
+var weathericonEl = document.querySelector("#weathericon");
+var temperatureEl = document.querySelector("#temperature");
+var humidityEl = document.querySelector("#humidity");
+var windspeedEl = document.querySelector("#windspeed");
 
 // need my queryURL to be a variable with lat and lon, so when the user search a specific city or state, the API will return the weather data for that city
 var cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + APIkey;
