@@ -4,7 +4,6 @@ var city = document.querySelector("#city").value;
 var lat, lon;
 var weatherEl = document.getElementById("weather");
 var fiveDayforecastEl = document.getElementById("fivedayforecast");
-
 // need my queryURL to be a variable with lat and lon, so when the user search a specific city or state, the API will return the weather data for that city
 var cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + APIkey;
 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
@@ -47,6 +46,7 @@ function getWeather(queryURL) {
         var windspeed = data.list[0].wind.speed;
         windspeed = Math.round(windspeed);
         //console logged the data to make sure it was working
+        console.log(data);
         console.log(cityname);
         console.log(date);
         console.log(weathericon);
@@ -57,23 +57,20 @@ function getWeather(queryURL) {
         var searchedcity = document.createElement("h2");
         searchedcity.textContent = cityname + " " + date;
         weatherEl.appendChild(searchedcity);
-        
         var weathericonEl = document.createElement("img");
         weathericonEl.setAttribute("src", "http://openweathermap.org/img/w/" + weathericon + ".png");
         weathericonEl.setAttribute("style", "width: 100px; height: 100px;")
         weatherEl.appendChild(weathericonEl);
-
         var temperatureEl = document.createElement("p");
         temperatureEl.textContent = "Temperature: " + temperature + "°F";
         weatherEl.appendChild(temperatureEl);
-
         var humidityEl = document.createElement("p");
         humidityEl.textContent = "Humidity: " + humidity + "%";
         weatherEl.appendChild(humidityEl);
-
         var windspeedEl = document.createElement("p");
         windspeedEl.textContent = "Wind Speed: " + windspeed + " MPH";
         weatherEl.appendChild(windspeedEl);
+
         // created variables for, date, weather icon, temperature, humidity, and wind speed for the 5 day forecast for day 1
         var date1 = data.list[7].dt_txt;
         date1 = date1.split(" ");
@@ -89,23 +86,20 @@ function getWeather(queryURL) {
         var date1El = document.createElement("h3");
         date1El.textContent = date1;
         fiveDayforecastEl.appendChild(date1El);
-
         var weathericon1El = document.createElement("img");
         weathericon1El.setAttribute("src", "http://openweathermap.org/img/w/" + weathericon1 + ".png");
         weathericon1El.setAttribute("style", "width: 100px; height: 100px;")
         fiveDayforecastEl.appendChild(weathericon1El);
-
         var temperature1El = document.createElement("p");
         temperature1El.textContent = "Temperature: " + temperature1 + "°F";
         fiveDayforecastEl.appendChild(temperature1El);
-
         var humidity1El = document.createElement("p");
         humidity1El.textContent = "Humidity: " + humidity1 + "%";
         fiveDayforecastEl.appendChild(humidity1El);
-
         var windspeed1El = document.createElement("p");
         windspeed1El.textContent = "Wind Speed: " + windspeed1 + " MPH";
         fiveDayforecastEl.appendChild(windspeed1El);
+
         // created variables for day 2 of the 5 day forecast
         var date2 = data.list[15].dt_txt;
         date2 = date2.split(" ");
@@ -121,23 +115,20 @@ function getWeather(queryURL) {
         var date2El = document.createElement("h3");
         date2El.textContent = date2;
         fiveDayforecastEl.appendChild(date2El);
-
         var weathericon2El = document.createElement("img");
         weathericon2El.setAttribute("src", "http://openweathermap.org/img/w/" + weathericon2 + ".png");
         weathericon2El.setAttribute("style", "width: 100px; height: 100px;")
         fiveDayforecastEl.appendChild(weathericon2El);
-
         var temperature2El = document.createElement("p");
         temperature2El.textContent = "Temperature: " + temperature2 + "°F";
         fiveDayforecastEl.appendChild(temperature2El);
-
         var humidity2El = document.createElement("p");
         humidity2El.textContent = "Humidity: " + humidity2 + "%";
         fiveDayforecastEl.appendChild(humidity2El);
-
         var windspeed2El = document.createElement("p");
         windspeed2El.textContent = "Wind Speed: " + windspeed2 + " MPH";
         fiveDayforecastEl.appendChild(windspeed2El);
+
         // created variables for day 3 of the 5 day forecast
         var date3 = data.list[23].dt_txt;
         date3 = date3.split(" ");
@@ -153,23 +144,20 @@ function getWeather(queryURL) {
         var date3El = document.createElement("h3");
         date3El.textContent = date3;
         fiveDayforecastEl.appendChild(date3El);
-
         var weathericon3El = document.createElement("img");
         weathericon3El.setAttribute("src", "http://openweathermap.org/img/w/" + weathericon3 + ".png");
         weathericon3El.setAttribute("style", "width: 100px; height: 100px;")
         fiveDayforecastEl.appendChild(weathericon3El);
-
         var temperature3El = document.createElement("p");
         temperature3El.textContent = "Temperature: " + temperature3 + "°F";
         fiveDayforecastEl.appendChild(temperature3El);
-
         var humidity3El = document.createElement("p");
         humidity3El.textContent = "Humidity: " + humidity3 + "%";
         fiveDayforecastEl.appendChild(humidity3El);
-
         var windspeed3El = document.createElement("p");
         windspeed3El.textContent = "Wind Speed: " + windspeed3 + " MPH";
         fiveDayforecastEl.appendChild(windspeed3El);
+
         // created variables for day 4 of the 5 day forecast
         var date4 = data.list[31].dt_txt;
         date4 = date4.split(" ");
@@ -185,23 +173,20 @@ function getWeather(queryURL) {
         var date4El = document.createElement("h3");
         date4El.textContent = date4;
         fiveDayforecastEl.appendChild(date4El);
-
         var weathericon4El = document.createElement("img");
         weathericon4El.setAttribute("src", "http://openweathermap.org/img/w/" + weathericon4 + ".png");
         weathericon4El.setAttribute("style", "width: 100px; height: 100px;")
-        fiveDayforecastEl.appendChild(weathericon4El);
-        
+        fiveDayforecastEl.appendChild(weathericon4El);     
         var temperature4El = document.createElement("p");
         temperature4El.textContent = "Temperature: " + temperature4 + "°F";
         fiveDayforecastEl.appendChild(temperature4El);
-
         var humidity4El = document.createElement("p");
         humidity4El.textContent = "Humidity: " + humidity4 + "%";
         fiveDayforecastEl.appendChild(humidity4El);
-
         var windspeed4El = document.createElement("p");
         windspeed4El.textContent = "Wind Speed: " + windspeed4 + " MPH";
         fiveDayforecastEl.appendChild(windspeed4El);
+
         // created variables for day 5 of the 5 day forecast
         var date5 = data.list[39].dt_txt;
         date5 = date5.split(" ");
@@ -217,27 +202,22 @@ function getWeather(queryURL) {
         var date5El = document.createElement("h3");
         date5El.textContent = date5;
         fiveDayforecastEl.appendChild(date5El);
-
         var weathericon5El = document.createElement("img");
         weathericon5El.setAttribute("src", "http://openweathermap.org/img/w/" + weathericon5 + ".png");
         weathericon5El.setAttribute("style", "width: 100px; height: 100px;")
         fiveDayforecastEl.appendChild(weathericon5El);
-
         var temperature5El = document.createElement("p");
         temperature5El.textContent = "Temperature: " + temperature5 + "°F";
         fiveDayforecastEl.appendChild(temperature5El);
-
         var humidity5El = document.createElement("p");
         humidity5El.textContent = "Humidity: " + humidity5 + "%";
         fiveDayforecastEl.appendChild(humidity5El);
-
         var windspeed5El = document.createElement("p");
         windspeed5El.textContent = "Wind Speed: " + windspeed5 + " MPH";
         fiveDayforecastEl.appendChild(windspeed5El);
     });
 }
     
-
 // event listener for search button
 getweatherbtn.addEventListener("click", function(event) {
     event.preventDefault();
