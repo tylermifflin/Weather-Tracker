@@ -10,7 +10,7 @@ var cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limi
 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
 var getweatherbtn = document.querySelector("#getweatherbtn");
 
-// function to get weather using fetch for the cityURl but then covert the data to the queryURL
+// function to get lat and lon for city using fetch for the cityURl but then covert the data to the queryURL to grab weather forecast data
 function getCity(cityURL) {
     fetch(cityURL)
     .then(function(response) {
@@ -22,17 +22,18 @@ function getCity(cityURL) {
         lon = data[0].lon;
         console.log(lat);
         console.log(lon);
-        // how do I get the queryURL to be a variable with lat and lon, so when the user search a specific city or state, the API will return the weather data for that city
+        // used my lat and lon variables to grab the data for lat and lon, so when the user search a specific city or state, the API will return the weather data for that city
         getWeather("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey)
     });
 }
 
-
+// function to get weather forecast data using fetch for the queryURL
 function getWeather(queryURL) {
     fetch(queryURL)
       .then(function (response) {
         return response.json();
       })
+      // created variables for city name, date, weather icon, temperature, humidity, and wind speed so that i can display the data on the page
       .then(function (data) {
         var cityname = data.city.name;
         var date = data.list[0].dt_txt; 
@@ -45,14 +46,14 @@ function getWeather(queryURL) {
         var humidity = data.list[0].main.humidity;
         var windspeed = data.list[0].wind.speed;
         windspeed = Math.round(windspeed);
-        //console.log(data);
+        //console logged the data to make sure it was working
         console.log(cityname);
         console.log(date);
         console.log(weathericon);
         console.log(temperature);
         console.log(humidity);
         console.log(windspeed);
-
+        // created elements to display the data on the page for the daily forecast
         var searchedcity = document.createElement("h2");
         searchedcity.textContent = cityname + " " + date;
         weatherEl.appendChild(searchedcity);
@@ -73,6 +74,24 @@ function getWeather(queryURL) {
         var windspeedEl = document.createElement("p");
         windspeedEl.textContent = "Wind Speed: " + windspeed + " MPH";
         weatherEl.appendChild(windspeedEl);
+        // created variables for, date, weather icon, temperature, humidity, and wind speed for the 5 day forecast
+        var date1 = data.list[7].dt_txt;
+        date1 = date1.split(" ");
+        date1 = date1[0];
+        var weathericon1 = data.list[7].weather[0].icon;
+        var temperature1 = data.list[7].main.temp;
+        temperature1 = (temperature1 - 273.15) * 1.8 + 32;
+        temperature1 = Math.round(temperature1);
+        var humidity1 = data.list[7].main.humidity;
+        var windspeed1 = data.list[7].wind.speed;
+        windspeed1 = Math.round(windspeed1);
+        // created elements to display the data on the page for the 5 day forecast
+        var date1El = document.createElement("h3");
+        date1El.textContent = date1;
+        fiveDayforecastEl.appendChild(date1El);
+        
+        
+
 
 
     });
