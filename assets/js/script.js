@@ -10,6 +10,8 @@ var cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limi
 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
 var getweatherbtn = document.querySelector("#getweatherbtn");
 
+getCities();
+
 // function to get lat and lon for city using fetch for the cityURl but then covert the data to the queryURL to grab weather forecast data
 function getCity(cityURL) {
     fetch(cityURL)
@@ -217,8 +219,7 @@ function getWeather(queryURL) {
         windspeed5El.textContent = "Wind Speed: " + windspeed5 + " MPH";
         fiveDayforecastEl.appendChild(windspeed5El);
     });
-}
-    
+}   
 // event listener for search button
 getweatherbtn.addEventListener("click", function(event) {
     event.preventDefault();
@@ -235,6 +236,7 @@ getweatherbtn.addEventListener("click", function(event) {
     cityEl.setAttribute("type", "button");
     cityEl.setAttribute("data-city", city);
     favoritesEl.appendChild(cityEl);
+    saveCity(city);
     // event listener for city buttons
     cityEl.addEventListener("click", function(event) {
         event.preventDefault();
@@ -245,5 +247,34 @@ getweatherbtn.addEventListener("click", function(event) {
     }
     );
 });
-
+// funtion to save city to local storage
+function saveCity(city) {
+    var cities = JSON.parse(localStorage.getItem("cities")) || [];
+    cities.push(city);
+    localStorage.setItem("cities", JSON.stringify(cities));
+  } 
+// function to get city from local storage
+function getCities() {
+    var cities = JSON.parse(localStorage.getItem("cities")) || [];
+    for (var i = 0; i < cities.length; i++) {
+        var city = cities[i];
+        var cityEl = document.createElement("button");
+        cityEl.textContent = city;
+        cityEl.setAttribute("class", "btn btn-primary");
+        cityEl.setAttribute("style", "width: 100%; margin: 5px 0px;");
+        cityEl.setAttribute("id", "city");
+        cityEl.setAttribute("type", "button");
+        cityEl.setAttribute("data-city", city);
+        favoritesEl.appendChild(cityEl);
+        // event listener for city buttons
+        cityEl.addEventListener("click", function(event) {
+            event.preventDefault();
+            var city = event.target.getAttribute("data-city");
+            var  cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIkey;
+            console.log(city);
+            getCity(cityURL);
+        }
+        );
+    }
+  }
 
