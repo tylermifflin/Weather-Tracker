@@ -225,5 +225,8 @@ getweatherbtn.addEventListener("click", function(event) {
     var  cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIkey;
     console.log(city);
     getCity(cityURL);
+    // set city to local storage
+    localStorage.setItem("city", city);
 });
+
 
