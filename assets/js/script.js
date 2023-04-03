@@ -74,7 +74,7 @@ function getWeather(queryURL) {
         var windspeedEl = document.createElement("p");
         windspeedEl.textContent = "Wind Speed: " + windspeed + " MPH";
         weatherEl.appendChild(windspeedEl);
-        // created variables for, date, weather icon, temperature, humidity, and wind speed for the 5 day forecast
+        // created variables for, date, weather icon, temperature, humidity, and wind speed for the 5 day forecast for day 1
         var date1 = data.list[7].dt_txt;
         date1 = date1.split(" ");
         date1 = date1[0];
@@ -85,7 +85,7 @@ function getWeather(queryURL) {
         var humidity1 = data.list[7].main.humidity;
         var windspeed1 = data.list[7].wind.speed;
         windspeed1 = Math.round(windspeed1);
-        // created elements to display the data on the page for the 5 day forecast
+        // created elements to display the data on the page for the 5 day forecast for day 1 
         var date1El = document.createElement("h3");
         date1El.textContent = date1;
         fiveDayforecastEl.appendChild(date1El);
@@ -106,7 +106,7 @@ function getWeather(queryURL) {
         var windspeed1El = document.createElement("p");
         windspeed1El.textContent = "Wind Speed: " + windspeed1 + " MPH";
         fiveDayforecastEl.appendChild(windspeed1El);
-        
+        // created variables for day 2 of the 5 day forecast
         var date2 = data.list[15].dt_txt;
         date2 = date2.split(" ");
         date2 = date2[0];
@@ -118,7 +118,29 @@ function getWeather(queryURL) {
         var windspeed2 = data.list[15].wind.speed;
         windspeed2 = Math.round(windspeed2);
 
+        var date2El = document.createElement("h3");
+        date2El.textContent = date2;
+        fiveDayforecastEl.appendChild(date2El);
+
+        var weathericon2El = document.createElement("img");
+        weathericon2El.setAttribute("src", "http://openweathermap.org/img/w/" + weathericon2 + ".png");
+        weathericon2El.setAttribute("style", "width: 100px; height: 100px;")
+        fiveDayforecastEl.appendChild(weathericon2El);
+
+        var temperature2El = document.createElement("p");
+        temperature2El.textContent = "Temperature: " + temperature2 + "°F";
+        fiveDayforecastEl.appendChild(temperature2El);
+
+        var humidity2El = document.createElement("p");
+        humidity2El.textContent = "Humidity: " + humidity2 + "%";
+        fiveDayforecastEl.appendChild(humidity2El);
+
+        var windspeed2El = document.createElement("p");
+        windspeed2El.textContent = "Wind Speed: " + windspeed2 + " MPH";
+        fiveDayforecastEl.appendChild(windspeed2El);
         
+
+
         
         
 
