@@ -4,6 +4,7 @@ var city = document.querySelector("#city").value;
 var lat, lon;
 var weatherEl = document.getElementById("weather");
 var fiveDayforecastEl = document.getElementById("fivedayforecast");
+var favoritesEl = document.getElementById("favorites");
 // need my queryURL to be a variable with lat and lon, so when the user search a specific city or state, the API will return the weather data for that city
 var cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + APIkey;
 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
@@ -225,8 +226,26 @@ getweatherbtn.addEventListener("click", function(event) {
     var  cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIkey;
     console.log(city);
     getCity(cityURL);
-    // set city to local storage
+    // create element to display city name in favorites 
+    var cityEl = document.createElement("button");
+    cityEl.textContent = city;
+    cityEl.setAttribute("class", "btn btn-primary");
+    cityEl.setAttribute("style", "width: 100%; margin: 5px 0px;");
+    cityEl.setAttribute("id", "city");
+    cityEl.setAttribute("type", "button");
+    cityEl.setAttribute("data-city", city);
+    favoritesEl.appendChild(cityEl);
+    // set cityEL to local storage
     localStorage.setItem("city", city);
+    // event listener for city buttons
+    cityEl.addEventListener("click", function(event) {
+        event.preventDefault();
+        var city = event.target.getAttribute("data-city");
+        var  cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIkey;
+        console.log(city);
+        getCity(cityURL);
+    }
+    );
 });
 
 
