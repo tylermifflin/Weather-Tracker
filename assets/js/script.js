@@ -213,22 +213,27 @@ function getWeather(queryURL) {
         var humidity5 = data.list[39].main.humidity;
         var windspeed5 = data.list[39].wind.speed;
         windspeed5 = Math.round(windspeed5);
-        
+        // created elements to display the data on the page for the 5 day forecast for day 5
+        var date5El = document.createElement("h3");
+        date5El.textContent = date5;
+        fiveDayforecastEl.appendChild(date5El);
 
+        var weathericon5El = document.createElement("img");
+        weathericon5El.setAttribute("src", "http://openweathermap.org/img/w/" + weathericon5 + ".png");
+        weathericon5El.setAttribute("style", "width: 100px; height: 100px;")
+        fiveDayforecastEl.appendChild(weathericon5El);
 
+        var temperature5El = document.createElement("p");
+        temperature5El.textContent = "Temperature: " + temperature5 + "°F";
+        fiveDayforecastEl.appendChild(temperature5El);
 
+        var humidity5El = document.createElement("p");
+        humidity5El.textContent = "Humidity: " + humidity5 + "%";
+        fiveDayforecastEl.appendChild(humidity5El);
 
-
-
-        
-        
-
-
-        
-
-
-
-
+        var windspeed5El = document.createElement("p");
+        windspeed5El.textContent = "Wind Speed: " + windspeed5 + " MPH";
+        fiveDayforecastEl.appendChild(windspeed5El);
     });
 }
     
