@@ -235,8 +235,6 @@ getweatherbtn.addEventListener("click", function(event) {
     cityEl.setAttribute("type", "button");
     cityEl.setAttribute("data-city", city);
     favoritesEl.appendChild(cityEl);
-    // set cityEL to local storage
-    localStorage.setItem("city", city);
     // event listener for city buttons
     cityEl.addEventListener("click", function(event) {
         event.preventDefault();
