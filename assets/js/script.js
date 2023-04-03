@@ -89,8 +89,31 @@ function getWeather(queryURL) {
         var date1El = document.createElement("h3");
         date1El.textContent = date1;
         fiveDayforecastEl.appendChild(date1El);
+
+        var weathericon1El = document.createElement("img");
+        weathericon1El.setAttribute("src", "http://openweathermap.org/img/w/" + weathericon1 + ".png");
+        weathericon1El.setAttribute("style", "width: 100px; height: 100px;")
+        fiveDayforecastEl.appendChild(weathericon1El);
+
+        var temperature1El = document.createElement("p");
+        temperature1El.textContent = "Temperature: " + temperature1 + "°F";
+        fiveDayforecastEl.appendChild(temperature1El);
+
+        var humidity1El = document.createElement("p");
+        humidity1El.textContent = "Humidity: " + humidity1 + "%";
+        fiveDayforecastEl.appendChild(humidity1El);
+
+        var windspeed1El = document.createElement("p");
+        windspeed1El.textContent = "Wind Speed: " + windspeed1 + " MPH";
+        fiveDayforecastEl.appendChild(windspeed1El);
         
         
+        
+        
+
+
+        
+
 
 
 
