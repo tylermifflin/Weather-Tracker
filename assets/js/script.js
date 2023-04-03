@@ -170,7 +170,19 @@ function getWeather(queryURL) {
         var windspeed3El = document.createElement("p");
         windspeed3El.textContent = "Wind Speed: " + windspeed3 + " MPH";
         fiveDayforecastEl.appendChild(windspeed3El);
-        
+        // created variables for day 4 of the 5 day forecast
+        var date4 = data.list[31].dt_txt;
+        date4 = date4.split(" ");
+        date4 = date4[0];
+        var weathericon4 = data.list[31].weather[0].icon;
+        var temperature4 = data.list[31].main.temp;
+        temperature4 = (temperature4 - 273.15) * 1.8 + 32;
+        temperature4 = Math.round(temperature4);
+        var humidity4 = data.list[31].main.humidity;
+        var windspeed4 = data.list[31].wind.speed;
+        windspeed4 = Math.round(windspeed4);
+        // created elements to display the data on the page for the 5 day forecast for day 4
+
 
 
 
