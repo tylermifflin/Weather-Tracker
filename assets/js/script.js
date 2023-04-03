@@ -117,7 +117,7 @@ function getWeather(queryURL) {
         var humidity2 = data.list[15].main.humidity;
         var windspeed2 = data.list[15].wind.speed;
         windspeed2 = Math.round(windspeed2);
-
+        // created elements to display the data on the page for the 5 day forecast for day 2
         var date2El = document.createElement("h3");
         date2El.textContent = date2;
         fiveDayforecastEl.appendChild(date2El);
@@ -138,7 +138,19 @@ function getWeather(queryURL) {
         var windspeed2El = document.createElement("p");
         windspeed2El.textContent = "Wind Speed: " + windspeed2 + " MPH";
         fiveDayforecastEl.appendChild(windspeed2El);
-        
+        // created variables for day 3 of the 5 day forecast
+        var date3 = data.list[23].dt_txt;
+        date3 = date3.split(" ");
+        date3 = date3[0];
+        var weathericon3 = data.list[23].weather[0].icon;
+        var temperature3 = data.list[23].main.temp;
+        temperature3 = (temperature3 - 273.15) * 1.8 + 32;
+        temperature3 = Math.round(temperature3);
+        var humidity3 = data.list[23].main.humidity;
+        var windspeed3 = data.list[23].wind.speed;
+        windspeed3 = Math.round(windspeed3);
+
+
 
 
         
