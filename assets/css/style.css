@@ -10,10 +10,6 @@ h1 {
 .weathercontainer {
     display: flex;
     flex-direction: row;
-    display: inline;
+    justify-content: space-between;
 }
 
-#fivedayforecast {
-    display: flex;
-    flex-direction: row;
-}
