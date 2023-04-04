@@ -2,6 +2,7 @@
 var APIkey = "44c0ceeaad2f13d35c6b6f46923f9c42"
 var city = document.querySelector("#city").value;
 var lat, lon;
+// created variables for my html elements so that i can display the data on the page
 var weatherEl = document.getElementById("weather");
 var fiveDayforecast1El = document.getElementById("fivedayforecast1");
 var fiveDayforecast2El = document.getElementById("fivedayforecast2");
@@ -17,6 +18,7 @@ var cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limi
 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
 var getweatherbtn = document.querySelector("#getweatherbtn");
 
+// getting my local storage for my favorites
 getCities();
 
 // function to get lat and lon for city using fetch for the cityURl but then covert the data to the queryURL to grab weather forecast data
@@ -113,7 +115,6 @@ function getWeather(queryURL) {
         fiveDayforecast1El.setAttribute("class", "card col-2");
         fiveDayforecast1El.setAttribute("style", "border: 1px solid black; padding: 10px; margin: 10px; background-color: rgb(133, 183, 138); border-radius: 10px;");
       
-
         // created variables for day 2 of the 5 day forecast
         var date2 = data.list[15].dt_txt;
         date2 = date2.split(" ");
@@ -145,7 +146,6 @@ function getWeather(queryURL) {
         fiveDayforecast2El.setAttribute("class", "card col-2");
         fiveDayforecast2El.setAttribute("style", "border: 1px solid black; padding: 10px; margin: 10px; background-color: rgb(133, 183, 138); border-radius: 10px;");
   
-
         // created variables for day 3 of the 5 day forecast
         var date3 = data.list[23].dt_txt;
         date3 = date3.split(" ");
@@ -177,7 +177,6 @@ function getWeather(queryURL) {
         fiveDayforecast3El.setAttribute("class", "card col-2");
         fiveDayforecast3El.setAttribute("style", "border: 1px solid black; padding: 10px; margin: 10px; background-color: rgb(133, 183, 138); border-radius: 10px;");
        
-
         // created variables for day 4 of the 5 day forecast
         var date4 = data.list[31].dt_txt;
         date4 = date4.split(" ");
