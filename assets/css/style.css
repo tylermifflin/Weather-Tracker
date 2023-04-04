@@ -3,8 +3,7 @@ h1 {
     font-size: 40px;
     font-weight: bold;
     text-align: center;
-    margin: 0;
-    padding: 0;
+    padding-top: 30px;
 }
 
 .weathercontainer {
