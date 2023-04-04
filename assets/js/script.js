@@ -5,6 +5,7 @@ var lat, lon;
 var weatherEl = document.getElementById("weather");
 var fiveDayforecastEl = document.getElementById("fivedayforecast");
 var favoritesEl = document.getElementById("favorites");
+var weathercontainerEl = document.getElementsByClassName("weathercontainer");
 // need my queryURL to be a variable with lat and lon, so when the user search a specific city or state, the API will return the weather data for that city
 var cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + APIkey;
 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
@@ -237,16 +238,8 @@ getweatherbtn.addEventListener("click", function(event) {
     cityEl.setAttribute("data-city", city);
     favoritesEl.appendChild(cityEl);
     saveCity(city);
-    // event listener for city buttons
-    cityEl.addEventListener("click", function(event) {
-        event.preventDefault();
-        var city = event.target.getAttribute("data-city");
-        var  cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIkey;
-        console.log(city);
-        getCity(cityURL);
-    }
-    );
-});
+}
+);
 // funtion to save city to local storage
 function saveCity(city) {
     var cities = JSON.parse(localStorage.getItem("cities")) || [];
@@ -276,5 +269,15 @@ function getCities() {
         }
         );
     }
-  }
+}
+        
+
+
+// function to clear favorites
+function clearFavorites() {
+    favoritesEl.textContent = "";
+    localStorage.clear();
+}
+
+
 
