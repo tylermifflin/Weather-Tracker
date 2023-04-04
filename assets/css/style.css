@@ -7,4 +7,13 @@ h1 {
     padding: 0;
 }
 
+.weathercontainer {
+    display: flex;
+    flex-direction: row;
+    display: inline;
+}
 
+#fivedayforecast {
+    display: flex;
+    flex-direction: row;
+}

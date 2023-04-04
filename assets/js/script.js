@@ -76,6 +76,7 @@ function getWeather(queryURL) {
         var windspeedEl = document.createElement("p");
         windspeedEl.textContent = "Wind Speed: " + windspeed + " MPH";
         weatherEl.appendChild(windspeedEl);
+        weatherEl.setAttribute("style", "border: 1px solid black; padding: 10px; margin: 10px; background-color: #f2f2f2;");
 
         // created variables for, date, weather icon, temperature, humidity, and wind speed for the 5 day forecast for day 1
         var date1 = data.list[7].dt_txt;
@@ -222,7 +223,7 @@ function getWeather(queryURL) {
         windspeed5El.textContent = "Wind Speed: " + windspeed5 + " MPH";
         fiveDayforecastEl.appendChild(windspeed5El);
         // want to style my five day forecast into smaller cards that display on the same row 
-        fiveDayforecastEl.setAttribute("class", "card");
+        fiveDayforecastEl.setAttribute("class", "card row");
         fiveDayforecastEl.setAttribute("style", "width: 18rem; margin: 10px; padding: 10px; border: 1px solid black; border-radius: 5px; background-color: #e3f2fd;");
         fiveDayforecastEl.setAttribute("style, display = flex; flex-wrap: wrap; display = in-line justify-content: space-between;")
     });
