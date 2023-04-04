@@ -6,6 +6,8 @@ var weatherEl = document.getElementById("weather");
 var fiveDayforecastEl = document.getElementById("fivedayforecast");
 var favoritesEl = document.getElementById("favorites");
 var weathercontainerEl = document.getElementsByClassName("weathercontainer");
+var clearhistorybtn = document.querySelector("#clearhistorybtn");
+var clearfavoritesbtn = document.querySelector("#clearfavoritesbtn");
 // need my queryURL to be a variable with lat and lon, so when the user search a specific city or state, the API will return the weather data for that city
 var cityURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=" + APIkey;
 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey;
@@ -219,6 +221,10 @@ function getWeather(queryURL) {
         var windspeed5El = document.createElement("p");
         windspeed5El.textContent = "Wind Speed: " + windspeed5 + " MPH";
         fiveDayforecastEl.appendChild(windspeed5El);
+        // want to style my five day forecast into smaller cards that display on the same row 
+        fiveDayforecastEl.setAttribute("class", "card");
+        fiveDayforecastEl.setAttribute("style", "width: 18rem; margin: 10px; padding: 10px; border: 1px solid black; border-radius: 5px; background-color: #e3f2fd;");
+        fiveDayforecastEl.setAttribute("style, display = flex; flex-wrap: wrap; display = in-line justify-content: space-between;")
     });
 }   
 // event listener for search button
@@ -238,8 +244,7 @@ getweatherbtn.addEventListener("click", function(event) {
     cityEl.setAttribute("data-city", city);
     favoritesEl.appendChild(cityEl);
     saveCity(city);
-}
-);
+});
 // funtion to save city to local storage
 function saveCity(city) {
     var cities = JSON.parse(localStorage.getItem("cities")) || [];
@@ -270,14 +275,17 @@ function getCities() {
         );
     }
 }
-        
 
-
-// function to clear favorites
+// function to clear local storage
 function clearFavorites() {
-    favoritesEl.textContent = "";
     localStorage.clear();
+    favoritesEl.innerHTML = "";
 }
 
-
+// event listener for clear favorites button
+clearfavoritesbtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    clearFavorites();
+}
+);
 

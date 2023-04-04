@@ -31,17 +31,18 @@
                     <div class="form-group">
                         <label for="city">City</label>
                         <input type="text" class="form-control" id="city" placeholder="Enter city">
-                    </div>
+                    </div> 
+                    <!--added a button to Get Weather, Clear History, and Clear Favorites, and call them in my JS-->
                     <button type="submit" class="btn btn-primary" id="getweatherbtn">Get Weather</button>
+                    <button type="submit" class="btn btn-primary" id="clearhistorybtn">Clear History</button>
+                    <button type="submit" class="btn btn-primary" id="clearfavoritesbtn">Clear Favorites</button>
                 </form>
                 <div id = "favorites">
                 </div>
-                <div id = "clearfavorites">
-            </div>
             <div class = "weathercontainer">
-            <div class = "card body flex column" id = "weather">
+            <div class = "card body flex row" id = "weather">
                 </div>
-                <div class = "card body" id = "fivedayforecast">            
+                <div class = "card flex row" id = "fivedayforecast">            
                 </div>
         </div>
     </div>
